@@ -5,12 +5,12 @@ import React from 'react';
 export default class LoginForm extends React.Component {
   render(){
     return(
-      <form onSubmit={this.props.userLogin}>
-        <label>Email</label>
-        <input name='email' value=''></input>
-        <label>Password</label>
-        <input name='password' value=''></input>
-        <button>log in </button>
+      <form className='loginForm' onSubmit={this.props.userLogin}>
+        <label className='formLabel'>Email</label>
+        <input type='text' className='formInput' name='email'></input>
+        <label className='formLabel'>Password</label>
+        <input type='text' className='formInput' name='password'></input>
+        <button className='loginBtnTwo'>log in</button>
       </form>
     )
   }

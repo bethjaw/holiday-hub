@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import LandingPage from './components/LandingPage'
 import LoginForm from './components/LoginForm'
+import Group from './components/Group'
 
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './App.css';
@@ -13,6 +14,8 @@ class App extends Component {
       data: [],
       loginForm: false,
       isLoggedIn: false,
+      currentUser: [],
+
     }
   }
 
@@ -23,27 +26,45 @@ class App extends Component {
   }
 
   toggleLogin = () => {
-    console.log('clicked!')
       this.setState({loginForm: !this.state.loginForm})
   }
 
   renderLoginForm(){
     if(this.state.loginForm){
-      return <LoginForm />
+      return <LoginForm userLogin={this.checkLogin}/>
     } else
     return
   }
 
-  // checkLogin = (e) => {
-  //   console.log("clicked!")
-  // }
+  checkLogin = (e) => {
+    e.preventDefault()
+    let userLogin = {
+      email: e.target.email.value,
+      password: e.target.password.value
+    }
+    console.log(userLogin)
+    let currentData = this.state.data
+    for(var i=0; i < currentData.length; i++){
+      if(currentData[i].email === userLogin.email && currentData[i].password === userLogin.password){
+        this.setState({user: currentData[i]}, () => {
+          this.setState({isLoggedIn: true})
+        })
+      }
+    }
+  }
 
   render() {
+    console.log(this.state.data);
     return (
       <Router>
         <div>
-          <LandingPage toggleLogin={this.toggleLogin} loginForm={this.state.loginForm} data={this.state.data}/>
+          <LandingPage
+            toggleLogin={this.toggleLogin}
+            loginForm={this.state.loginForm}
+            data={this.state.data}
+          />
           {this.renderLoginForm()}
+          
         </div>
       </Router>
     );

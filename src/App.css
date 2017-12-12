@@ -58,7 +58,20 @@ body {
   margin: 20px;
 }
 
-.loginBtn:hover {
+.loginBtnTwo {
+  border: 1px solid #354940;
+  color: #354940;
+  border-radius: 3px;
+  height: 30px;
+  width: 100px;
+  /*margin-top: 40px;*/
+  font-family: 'Lato', sans-serif;
+  font-size: 12px;
+  margin: 20px;
+}
+
+
+.loginBtn:hover, .loginBtnTwo:hover {
   border: 2px solid #354940;
   background-color: #354940;
   color: #F5F3F2;
@@ -69,6 +82,24 @@ body {
   flex-direction: row;
   justify-content: center;
 }
+
+.loginForm {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+
+.formLabel {
+  padding: 10px;
+}
+
+.formInput {
+  border-radius: 3px;
+  height: 20px;
+  width: 150px;
+}
+
 
 /*.App-title {
   font-size: 1.5em;
