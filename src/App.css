@@ -1,20 +1,76 @@
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+}
+
+/*LANDING PAGE*/
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+  background-color: #354940;
+  height: 300px;
+  padding-top: 80px;
   color: white;
 }
 
-.App-title {
+.holidayTitle {
+  font-family: 'Ribeye Marrow', cursive;
+  font-size: 40px;
+  margin: 0;
+}
+
+.welcome {
+  font-family: 'Lato', sans-serif;
+  font-weight: 200;
+  margin: 0;
+}
+
+.antlers {
+  height: 80px;
+  width: 80px;
+}
+
+.homeDiv {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.homeBody {
+  width: 800px;
+}
+
+.loginBtn {
+  border: 2px solid #354940;
+  color: #354940;
+  border-radius: 3px;
+  height: 50px;
+  width: 160px;
+  /*margin-top: 40px;*/
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  margin: 20px;
+}
+
+.loginBtn:hover {
+  border: 2px solid #354940;
+  background-color: #354940;
+  color: #F5F3F2;
+}
+
+.btnDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+/*.App-title {
   font-size: 1.5em;
 }
 
@@ -25,4 +81,4 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}
+}*/
