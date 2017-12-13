@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import LandingPage from './components/LandingPage'
 import LoginForm from './components/LoginForm'
 import MyGroup from './components/MyGroup'
+import './App.css';
 
 // import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import './App.css';
 
 class App extends Component {
   constructor(props){

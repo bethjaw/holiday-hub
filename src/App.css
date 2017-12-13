@@ -100,16 +100,43 @@ body {
   width: 150px;
 }
 
+/*MY GROUP COMPONENT*/
 
-/*.App-title {
-  font-size: 1.5em;
+.mygrouphead{
+  display: flex;
+  justify-content: center;
+  background-color: #354940;
+  color: #F5F3F2;
+  height: 80px;
+  padding-top: 20px;
+
 }
 
-.App-intro {
-  font-size: large;
+.groupWelcome {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  /*font-family: 'Lato', sans-serif;*/
+  font-weight: 300;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}*/
+.goToSingleBtn{
+  height: 50px;
+  width: 200px;
+  background-color: #4A82C1;
+  color: #F5F3F2;
+  font-size: 16px;
+  font-family: 'Lato', sans-serif;
+  margin: 10px;
+}
+
+.personBtns {
+  padding-left: 40px;
+  padding-top: 20px;
+  /*border: 2px solid #354940;*/
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

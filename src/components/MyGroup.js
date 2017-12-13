@@ -1,5 +1,8 @@
 import React from 'react';
 import GroupList from './GroupList'
+import '../App.css';
+
+
 
 export default class MyGroup extends React.Component {
   constructor(props){
@@ -19,19 +22,26 @@ export default class MyGroup extends React.Component {
 
 
   render(){
-    console.log(this.state.usersInGroup)
+    // console.log(this.state.usersInGroup)
     return(
       <div>
-        <h1>Welcome {this.props.currentUser.name}!</h1>
-          <h3>Your in group {this.props.currentUser.group_name}</h3>
-          <p>Check out everyones wish list below!</p>
-
+        <header className='mygrouphead'>
+          <h1 className="holidayTitle">Holiday Hub!</h1>
+        </header>
+        <section className='groupWelcome'>
+          <h2>Welcome {this.props.currentUser.name}!</h2>
+            <h4>Group: {this.props.currentUser.group_name}</h4>
+              <p>Check out everyones wish list below!</p>
+        </section>
+        <section className='personBtns'>
           {this.state.usersInGroup.map((user) => {
             return <GroupList key={user.users_id} user={user}
               isLoggedIn={this.props.isLoggedIn}
               currentUser={this.props.currentUser}
+
             />
           })}
+        </section>
       </div>
     )
   }
