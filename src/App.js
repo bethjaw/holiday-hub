@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import LandingPage from './components/LandingPage'
 import LoginForm from './components/LoginForm'
-import Group from './components/Group'
+import MyGroup from './components/MyGroup'
 
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+// import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './App.css';
 
 class App extends Component {
@@ -15,12 +15,12 @@ class App extends Component {
       loginForm: false,
       isLoggedIn: false,
       currentUser: [],
-
+      removeLanding: true,
     }
   }
 
   async componentDidMount(){
-    const response = await fetch('https://holidayhub-api.herokuapp.com/api/users')
+    const response = await fetch('https://holidayhub-api.herokuapp.com/api/usergroupdata')
     const json = await response.json()
     this.setState({data: json})
   }
@@ -31,7 +31,9 @@ class App extends Component {
 
   renderLoginForm(){
     if(this.state.loginForm){
-      return <LoginForm userLogin={this.checkLogin}/>
+      return <LoginForm
+        userLogin={this.checkLogin}
+      />
     } else
     return
   }
@@ -42,31 +44,46 @@ class App extends Component {
       email: e.target.email.value,
       password: e.target.password.value
     }
-    console.log(userLogin)
-    let currentData = this.state.data
-    for(var i=0; i < currentData.length; i++){
-      if(currentData[i].email === userLogin.email && currentData[i].password === userLogin.password){
-        this.setState({user: currentData[i]}, () => {
-          this.setState({isLoggedIn: true})
-        })
+
+    let user = ''
+    for(var i=0; i < this.state.data.length; i++){
+      if(this.state.data[i].email === userLogin.email && this.state.data[i].password === userLogin.password){
+        user = this.state.data[i]
+        }
       }
+      this.setState({
+        isLoggedIn: true,
+        currentUser: user,
+        removeLanding: false,
+        loginForm: false,
+      })
     }
-  }
+
+
 
   render() {
-    console.log(this.state.data);
+    // console.log('removelanding', this.state.removeLanding);
+    // console.log('currentuser state', this.state.currentUser)
+    // console.log(this.state.isLoggedIn)
     return (
-      <Router>
         <div>
-          <LandingPage
+          {this.state.removeLanding ? <LandingPage
             toggleLogin={this.toggleLogin}
-            loginForm={this.state.loginForm}
             data={this.state.data}
-          />
-          {this.renderLoginForm()}
-          
+          /> : null
+        }
+
+        {this.renderLoginForm()}
+
+
+          {
+            this.state.isLoggedIn ? <MyGroup data={this.state.data}
+            isLoggedIn={this.state.isLoggedIn}
+            currentUser={this.state.currentUser}
+          /> : null
+          }
+
         </div>
-      </Router>
     );
   }
 }
