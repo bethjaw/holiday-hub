@@ -16,7 +16,9 @@ export default class MyGroup extends React.Component {
   async componentDidMount(){
     const response = await fetch(`https://holidayhub-api.herokuapp.com/api/userByGroup/${this.props.currentUser.users_id}`)
     const json = await response.json()
-    this.setState({usersInGroup: json})
+    this.setState({
+      usersInGroup: json
+    })
   }
 
 
@@ -36,8 +38,8 @@ export default class MyGroup extends React.Component {
         <section className='personBtns'>
           {this.state.usersInGroup.map((user) => {
             return <GroupList key={user.users_id} user={user}
-              isLoggedIn={this.props.isLoggedIn}
-              currentUser={this.props.currentUser}
+            isLoggedIn={this.props.isLoggedIn}
+            currentUser={this.props.currentUser}
 
             />
           })}

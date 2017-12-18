@@ -1,33 +1,36 @@
 import React from 'react';
+import SingleWishList from './SingleWishList';
 
 
 export default class GroupList extends React.Component {
   constructor(props){
     super(props)
-    console.log(props)
+    // console.log('props', props)
 
     this.state = {
       wishlist: [],
-
     }
   }
 
-  async componentDidMount(){
-    const response = await fetch(`https://holidayhub-api.herokuapp.com/api/gifts/1${this.props.user.users_id}`)
-    const json = await response.json()
-    this.setState({wishlist: json})
-  }
 
   onClickList = (e) => {
+    e.preventDefault()
+    this.setState({
+      wishlist: this.props.user
+    })
 
   }
 
 
   render(){
-    console.log(this.state.wishlist)
+    // console.log('this.state.wishlist', this.state.wishlist)
     return (
       <div>
-      <button className='goToSingleBtn' onClick={this.onClickList}>{this.props.user.name}</button>
+        <form onSubmit={this.onClickList}>
+          <input type='hidden' name='user_id' value={this.props.user}/>
+          <button className='goToSingleBtn'>{this.props.user.name}</button>
+        </form>
+        <SingleWishList wishlist={this.state.wishlist}/>
     </div>
     )
   }
